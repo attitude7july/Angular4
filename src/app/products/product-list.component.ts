@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 @Component({
 selector:"pm-products",
-templateUrl:"product-list.component.html"
+templateUrl:"product-list.component.html",
+styleUrls:["./product-list.css"]
 
 })
 //life cycle hook OnInit
@@ -12,8 +13,23 @@ export class ProductListComponent implements OnInit{
   imageWidth:number=50;
   imageMargin:number=2;
   showImage:boolean=false;
-  listFilter:string="cart";
+  _listFilter:string;
 
+  get listFilter():string{
+
+    return this._listFilter;
+  }
+  set listFilter(value:string){
+
+    this._listFilter=value;
+    this.filteredProducts=this._listFilter?this.performFilter(this._listFilter):this.products;
+  }
+  constructor(){
+    this._listFilter='cart';
+    this.filteredProducts=this.products;
+
+  }
+  filteredProducts:IProduct[];
   products:IProduct[]=[
     {
         "productId": 1,
@@ -76,5 +92,9 @@ ngOnInit():void{
 
 
 }
-
+performFilter(filterBy:string):IProduct[]{
+filterBy=filterBy.toLowerCase();
+return this.products.filter((product:IProduct)=>
+     product.productName.toLocaleLowerCase().indexOf(filterBy)!=-1);
+}
 }
