@@ -5,7 +5,7 @@ selector:"pm-products",
 templateUrl:"product-list.component.html"
 
 })
-
+//life cycle hook OnInit
 export class ProductListComponent implements OnInit{
 
   pageTitle:string ="Product List";
@@ -72,6 +72,9 @@ this.showImage=!this.showImage;
 
 
 };
+ngOnInit():void{
 
+
+}
 
 }
