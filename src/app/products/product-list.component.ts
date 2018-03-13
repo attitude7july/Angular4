@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 @Component({
 selector:"pm-products",
@@ -6,7 +6,7 @@ templateUrl:"product-list.component.html"
 
 })
 
-export class ProductListComponent{
+export class ProductListComponent implements OnInit{
 
   pageTitle:string ="Product List";
   imageWidth:number=50;
