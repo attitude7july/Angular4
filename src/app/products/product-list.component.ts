@@ -9,6 +9,7 @@ styleUrls:["./product-list.css"]
 //life cycle hook OnInit
 export class ProductListComponent implements OnInit{
 
+  star:string="";
   pageTitle:string ="Product List";
   imageWidth:number=50;
   imageMargin:number=2;
@@ -25,9 +26,8 @@ export class ProductListComponent implements OnInit{
     this.filteredProducts=this._listFilter?this.performFilter(this._listFilter):this.products;
   }
   constructor(){
-    this._listFilter='cart';
-    this.filteredProducts=this.products;
-
+    this._listFilter="cart";
+    this.filteredProducts=this._listFilter?this.performFilter(this._listFilter):this.products;
   }
   filteredProducts:IProduct[];
   products:IProduct[]=[
@@ -89,12 +89,16 @@ this.showImage=!this.showImage;
 
 };
 ngOnInit():void{
+console.log("init");
 
-
-}
+};
 performFilter(filterBy:string):IProduct[]{
 filterBy=filterBy.toLowerCase();
 return this.products.filter((product:IProduct)=>
      product.productName.toLocaleLowerCase().indexOf(filterBy)!=-1);
+};
+
+onRatingClick(message:string):void{
+this.star=message;
 }
 }

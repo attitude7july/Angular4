@@ -1,6 +1,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-      {{pageTitle}}
+      <h1>{{pageTitle}}</h1>
+      <h2>{{star}}</h2>
   </div>
 <div class="panel-body">
 <div class="table-responsive">
@@ -56,7 +57,7 @@
                 {{product.price | currency :'USD':true:'1.2-2'}}
             </td>
             <td>
-                {{product.starRating}}
+                <pm-start [rating]="product.starRating" (ratingClicked)='onRatingClick($event)'></pm-start>
             </td>
         </tr>
       </tbody>
