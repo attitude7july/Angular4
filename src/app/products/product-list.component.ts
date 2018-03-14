@@ -10,6 +10,7 @@ styleUrls:["./product-list.css"]
 //life cycle hook OnInit
 export class ProductListComponent implements OnInit{
 
+  errorMessage:string;
   star:string="";
   pageTitle:string ="Product List";
   imageWidth:number=50;
@@ -39,9 +40,11 @@ this.showImage=!this.showImage;
 };
 ngOnInit():void{
 console.log("init");
-this._listFilter="cart";
-this.products=this._productRepository.getProducts();
-this.filteredProducts=this._listFilter?this.performFilter(this._listFilter):this.products;
+this._productRepository.getProducts().subscribe(products=>{
+  this.products=products;
+  this.filteredProducts=this.products;
+},
+  error=>this.errorMessage=<any>error);
 
 };
 performFilter(filterBy:string):IProduct[]{
