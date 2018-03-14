@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import {ProductListComponent} from "./products/product-list.component"
 import {ConvertToSpacesPipe} from "./shared/convert-to-spaces.pipe"
 import {StarComponent} from "./shared/star.component"
+import { ProductService } from './services/product.service';
 @NgModule({
   declarations: [AppComponent,ProductListComponent,ConvertToSpacesPipe,StarComponent],
   imports: [BrowserModule,FormsModule],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
