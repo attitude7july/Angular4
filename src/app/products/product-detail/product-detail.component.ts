@@ -25,7 +25,7 @@ console.log(this._route.snapshot.paramMap.get("id"));
     //2015 back text `
     this.pageTitle +=`${id}`;
     this.product= {
-      "productId": 100,
+      "productId": id,
       "productName": "Video Game Controller",
       "productCode": "GMG-0042",
       "releaseDate": "October 15, 2015",
