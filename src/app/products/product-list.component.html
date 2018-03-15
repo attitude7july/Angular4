@@ -45,7 +45,7 @@
               />
             </td>
             <td>
-                {{product.productName}}
+             <a [routerLink]="['/products',product.productId]">  {{product.productName}}</a>
             </td>
             <td>
                 {{product.productCode |  convertToSpaces:'-'}}
@@ -57,7 +57,7 @@
                 {{product.price | currency :'USD':true:'1.2-2'}}
             </td>
             <td>
-                <pm-start [rating]="product.starRating" (ratingClicked)='onRatingClick($event)'></pm-start>
+                <pm-star [rating]="product.starRating" (ratingClicked)='onRatingClick($event)'></pm-star>
             </td>
         </tr>
       </tbody>

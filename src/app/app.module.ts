@@ -1,3 +1,4 @@
+import  {RouterModule} from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -11,7 +12,14 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { WelcomeComponent } from './home/welcome.component';
 @NgModule({
   declarations: [WelcomeComponent,AppComponent,ProductListComponent,ConvertToSpacesPipe,StarComponent, ProductDetailComponent],
-  imports: [BrowserModule,FormsModule,HttpClientModule],
+  imports: [BrowserModule,FormsModule,HttpClientModule,RouterModule.forRoot([
+//set routing here
+{path:"products",component:ProductListComponent},
+{path:"products/:id",component:ProductDetailComponent},
+{path:"welcome",component:WelcomeComponent},
+{path:" ",redirectTo:"welcome",pathMatch:"full"},
+{path:"*",redirectTo:"welcome",pathMatch:"full"}
+  ])],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
